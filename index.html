@@ -8,12 +8,9 @@
         body {
             margin: 0;
             overflow: hidden;
-            font-family: Arial, sans-serif;
-
-            background-color: black;
-            color: white;
-            text-align: center;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #000000, #1a1a1a);
+            color: #ffffff;
+            font-family: 'Roboto', Arial, sans-serif;
         }
 
         canvas {
@@ -23,91 +20,152 @@
             width: 100vw;
             height: 100vh;
             z-index: -1;
+            opacity: 0.7;
         }
-        .content {
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
             position: relative;
             z-index: 1;
-            padding: 20px;
-            text-align: center;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-        }
+
         .header {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 50px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 40px 0;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
         }
+
+        .header b {
+            color: #ff0000;
+            animation: pulse 2s infinite;
+        }
+
         .images {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+            justify-items: center;
         }
+
+        .image-box, .logo {
+            transition: transform 0.3s ease;
+        }
+
+        .image-box:hover, .logo:hover {
+            transform: scale(1.05);
+        }
+
         .image-box {
             width: 250px;
             height: 250px;
-            background-color: white;
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            overflow: hidden;
         }
+
         .logo {
             width: 300px;
             height: 300px;
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
         }
+
+        .info-grid {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            font-size: 1.2rem;
+        }
+
         .grid {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
         }
+
         .square {
             width: 70px;
             height: 70px;
-            background-color: white;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            overflow: hidden;
         }
-        b {
-        	color: red;
-        }
-        h2 {
-            display: inline-block;
-            width: 49%; /* Hace que cada H2 ocupe la mitad del contenedor */
-            margin: 0; /* Elimina espacios extra */
 
+        .square:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
         }
-        .presidente {
-            text-align: left;
+
+        .message {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
-        .roles {
-            text-align: right;
+
+        /* Texto animado central */
+        .animated-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            animation: float 3s infinite ease-in-out, fade 2s infinite;
+            z-index: 2;
+            pointer-events: none;
         }
-        .square2 {
-            width: 70px;
-            height: 70px;
-            background-color: white;
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-20px); }
+        }
+
+        @keyframes fade {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .images { grid-template-columns: 1fr; }
+            .info-grid { flex-direction: column; text-align: center; }
+            .header { font-size: 1.8rem; }
+            .animated-text { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
     <canvas id="matrixCanvas"></canvas>
-    <div class="container" class="content">
-        <div class="header">WEBSITE <b>PWNED</b> BY <br>LaPampaLeaks & BogotaLeaks & Uruguayo1337</div>
+    <div class="animated-text">NO SE OLVIDEN DEL CORRUPTO EX PRESIDENTE</div>
+    <div class="container">
+        <div class="header">WEBSITE <b>PWNED</b> BY<br>LaPampaLeaks & BogotaLeaks & Uruguayo1337</div>
         <div class="images">
             <div class="image-box"><img src="https://raw.githubusercontent.com/lapampaleaks/lapampaleaks.github.io/refs/heads/main/7413793193692.png" width="250" height="250"></div>
             <div class="logo"><img src="https://i.imgur.com/bzqHQaR.png" width="300" height="300"></div>
             <div class="image-box"><img src="https://raw.githubusercontent.com/lapampaleaks/lapampaleaks.github.io/refs/heads/main/7417931593692.png" width="250" height="250"></div>
         </div>
-        <h2 class="presidente">Yamandu Orsi: +598 092 775 110</h2>
-        <h2 class="roles">Information Security Director - AGESIC</h2>
-        <div style="margin-top: 35px"><a target="_blank" href="https://dinacia.gub.uy"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnKIAWeXF87NCHaEofUQ3HR00fny2hw48xrg&s" width="230" height="80"></a></div>
+        <div class="info-grid">
+            <div>Yamandu Orsi: +598 092 775 110</div>
+            <div>Information Security Director - AGESIC</div>
+        </div>
+        <div style="text-align: center;">
+            <a target="_blank" href="https://dinacia.gub.uy"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnKIAWeXF87NCHaEofUQ3HR00fny2hw48xrg&s" width="230" height="80"></a>
+        </div>
         <div class="grid">
             <div class="square"><a target="_blank" href="https://breachforums.st/Thread-URUGUAY-OSE-VPN-ACCESS"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Logo_OSE.svg/2560px-Logo_OSE.svg.png" width="70" height="70"></a></div>
             <div class="square"><a target="_blank" href="https://breachforums.st/Thread-uruguay-Las-Piedras-Shopping-Database-Source-Code"><img src="https://logoteca.uy/wp-content/uploads/sites/3/2024/09/Logo-Las-Piedras-Shopping.svg" width="70" height="70"></a></div>
@@ -116,23 +174,17 @@
             <div class="square"><a target="_blank" href="https://breachforums.st/Thread-URUGUAY-AGESIC-FULL-DATA-APIS"><img src="https://www.gub.uy/presidencia/sites/presidencia/files/imagenes/noticias/f5bcbc542ee58f1ef4d82556128c3557.jpg" width="70" height="70"></a></div>
             <div class="square"><a target="_blank" href="https://breachforums.st/Thread-MSP-URUGUAY-USERS-Emails-Full-Names-Rol"><img src="https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/styles/listado_contenedores/public/2023-02/MSP_LOGOTIPO_2020_-APAISADO%20NEGATIVO.jpg?itok=hcxZK3eG" width="70" height="70"></a></div>
             <div class="square"><a target="_blank" href="https://breachforums.st/Thread-Uruguay-Frente-Amplio-Base-de-datos"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Logo_Frente_Amplio.svg/1200px-Logo_Frente_Amplio.svg.png" width="70" height="70"></a></div>
-        </div> 
+        </div>
+        <div class="message">
+            URUGUAY CADA VEZ ESTA PEOR, HAY MAS CORRUPCION POLITICA, MAS MAFIAS, MAS POBREZA Y LO UNICO QUE VE EL PUEBLO EN RESPUESTA DEL ESTADO SON AGENDAS POLITICAS DICTADAS POR LA AGENDA 2030 Y EL WEF. NOS CANSAMOS DEL PROGRESISMO, LAS MENTIRAS DE LOS POLITICOS Y SOBRE TODO DE QUE LA IMAGEN DEL URUGUAY ESTE DECAYENDO
+            <br><br>
+            <span style="font-size: 1.5em; color: #ff0000;">URUGUAY NECESITA GOBERNANTES, NO TITERES</span>
+            <br><br>
+            TENEMOS ACCESO A TODAS LAS DIRECCIONES, REGISTROS SGSP, SECRETOS Y CARPETAZOS DE CADA POLITICO Y FUNCIONARIO PUBLICO. SABEMOS QUIENES SON, SABEMOS DONDE SE ENCUENTRAN Y LES HAREMOS PAGAR LO QUE ESTAN HACIENDO CON URUGUAY
+        </div>
     </div>
 
-</div>
-<div style="text-align: center; margin-top: 20px;">
-    <div style="display: inline-block; background-color: black; color: white; padding: 10px;">
-            URUGUAY CADA VEZ ESTA PEOR, HAY MAS CORRUPCION POLITICA, MAS MAFIAS, MAS POBREZA Y LO UNICO QUE VE EL PUEBLO EN RESPUESTA DEL ESTADO SON AGENDAS POLITICAS DICTADAS POR LA AGENDA 2030 Y EL WEF. NOS CANSAMOS DEL PROGRESISMO, LAS MENTIRAS DE LOS POLITICOS Y SOBRE TODO DE QUE LA IMAGEN DEL URUGUAY ESTE DECAYENDO
-            <br>
-            <br>
-            <span style="font-size: 1.5em;">URUGUAY NECESITA GOBERNANTES, NO TITERES</span>
-            <br>
-            <br>
-            TENEMOS ACCESO A TODAS LAS DIRECCIONES, REGISTROS SGSP, SECRETOS Y CARPETAZOS DE CADA
-POLITCO Y FUNCIONARIO PUBLICO. SABEMOS QUIENES SON, SABEMOS DONDE SE ENCUENTRAN Y LES
-HAREMOS PAGAR LO QUE ESTAN HACIENDO CON URUGUAY
-        </div>
-        <script>
+    <script>
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -147,8 +199,8 @@ HAREMOS PAGAR LO QUE ESTAN HACIENDO CON URUGUAY
         function drawMatrixRain() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#0F0';
-            ctx.font = fontSize + 'px monospace';
+            ctx.fillStyle = '#00ff00';
+            ctx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
                 const text = letters[Math.floor(Math.random() * letters.length)];
@@ -162,7 +214,12 @@ HAREMOS PAGAR LO QUE ESTAN HACIENDO CON URUGUAY
         }
 
         setInterval(drawMatrixRain, 50);
-    </script>
 
+        // Ajustar canvas al cambiar tamaño de ventana
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
